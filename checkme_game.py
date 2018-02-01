@@ -4,6 +4,18 @@ import sys
 import pygame
 import serial
 from pygame.locals import *
+import math
+import math.sin
+import math.cos
+
+
+
+
+MAX_MAG = 100
+MIN_MAG = 10
+MAX_ANGLE = 90
+MIN_ANGLE = 0
+
 
 pygame.init()
 
@@ -32,16 +44,6 @@ while True: #main loop
       pygame.quit()
       sys.exit() 
   pygame.display.update()
-
-=======
-import math
-import math.sin
-import math.cos
-
-MAX_MAG = 100
-MIN_MAG = 10
-MAX_ANGLE = 90
-MIN_ANGLE = 0
 
 
 class launcher:
@@ -77,4 +79,4 @@ class launcher:
 #theta = 45
 # x1 =x0 + mag*cos(theta)
 # Y1 =Y0 - mag*sin(theta) 
->>>>>>> 9bae46b64e7032ac45e09bd0ccc61174a23ad48a
+
