@@ -5,8 +5,6 @@ import pygame
 import serial
 from pygame.locals import *
 import math
-import math.sin
-import math.cos
 import Launcher
 
 
@@ -31,7 +29,6 @@ def draw_world(surf): #background function
 while True: #main loop
   draw_world(DISPLAYSURF) #draw background
   DISPLAYSURF.blit(textSurfaceObj,textRectObj) #draw title text
-  Launcher() #draw the launcher
 
 
   for event in pygame.event.get():
@@ -40,8 +37,10 @@ while True: #main loop
         Launcher.changeAngle(3)
     if event.type == QUIT:
       pygame.quit()
-      sys.exit() 
+      sys.exit()
+  Launcher.draw(DISPLAYSURF) #display Launcher  
   pygame.display.update()
+  fpsClock.tick(FPS)
 
 
 
