@@ -32,8 +32,8 @@ class launcher:
       self.angle = self.angle + dtheta
 
   def drawCannon(self,surf)
-    X1 = x + self.magnitude*cos(self.theta)
-    Y1 = y + self.magnitude*sin(self.theta)
+    X1 = x + self.magnitude*cos(self.dtheta)
+    Y1 = y + self.magnitude*sin(self.dtheta)
       
          
 
