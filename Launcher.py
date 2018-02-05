@@ -1,7 +1,5 @@
 #!/usr/bin/py
 import math
-import math.sin
-import math.cos
 
 MAX_MAG = 100
 MIN_MAG = 10
