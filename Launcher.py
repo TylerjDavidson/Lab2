@@ -17,17 +17,17 @@ class launcher:
    
   def changeMagnitude(self,delta):
     if delta <= 100 and delta >= 10:
-      self.magnitude = self.magnitude + delta 
+      self.magnitude = self.magnitude + self.delta 
     else: 
       delta = 0
-      self.magnitude = self.magnitude + delta
+      self.magnitude = self.magnitude + self.delta
 
   def changeAngle(self,dtheta):
     if dtheta <= 90 and dtheta >= 0:
-      self.angle = self.angle + dtheta
+      self.angle = self.angle + self.dtheta
     else:
       dtheta = 0
-      self.angle = self.angle + dtheta
+      self.angle = self.angle + self.dtheta
 
   def drawCannon(self,surf):
     X1 = x + self.magnitude*cos(self.dtheta)
