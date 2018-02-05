@@ -11,7 +11,7 @@ import Launcher
 pygame.init()
 
 DISPLAYSURF = pygame.display.set_mode((500,400)) #main window
-pygame.display.set_caption("Launchr") #window title
+pygame.display.set_caption("Launcher") #window title
 #s = serial.Serial("/dev/ttyACM0") #uncomment eventually
 FPS = 30 #frames/s
 
@@ -19,7 +19,7 @@ FPS = 30 #frames/s
 
 def draw_world(surf): #background function
   fontObj = pygame.font.Font('freesansbold.ttf',32) #font and font size
-  textSurfaceObj = fontObj.render('Launchr 1.0',True,(255,255,255),(0,0,0)) #white text, black highlight
+  textSurfaceObj = fontObj.render('Launcher 1.0',True,(255,255,255),(0,0,0)) #white text, black highlight
   textRectObj = textSurfaceObj.get_rect()
   textRectObj.center = (250,20)
   pygame.draw.rect(surf,(20,150,200),(0,0,500,380)) #sky
@@ -38,9 +38,9 @@ while(True): #main loop
       if event.key == pygame.K_DOWN: #rotate down
         Launcher.changeAngle(-3)
       if event.key == pygame.K_LEFT: #decrease power
-        Launcher.changeMagnitude(-3)
+        Launcher.changeMagnitude(-5)
       if event.key == pygame.K_RIGHT: #increase power
-        Launcher.changeMagnitude(3)
+        Launcher.changeMagnitude(5)
     if event.type == QUIT:
       pygame.quit()
       sys.exit()
