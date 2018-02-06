@@ -13,7 +13,7 @@ def draw_world(surf):
 	textRectObj.center = (250,20)
 	pygame.draw.rect(surf,(20,150,200),(0,0,500,380)) #sky
 	pygame.draw.rect(surf,(0,255,20),(0,380,500,20)) #grass
-	(surf).blit(textSurfaceObj,textRectObj) #draw title text
+	surf.blit(textSurfaceObj,textRectObj) #draw title text
 
 pygame.init() 
 DISPLAYSURF = pygame.display.set_mode((500,400)) #main window

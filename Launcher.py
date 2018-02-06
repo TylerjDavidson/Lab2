@@ -1,5 +1,7 @@
 #!/usr/bin/py
 import math
+import pygame
+from pygame.locals import *
 
 MAX_MAG = 100
 MIN_MAG = 10
@@ -13,25 +15,26 @@ class launcher:
 		self.x = x
 		self.y = y
 		self.magnitude = 50
-		self.angle = 45
+		self.angle = math.radians(45)
 
 	def changeMagnitude(self,delta):
-		if delta <= 100 and delta >= 10:
-			self.magnitude = self.magnitude + delta 
-		else: 
+		if self.magnitude+delta > MAX_MAG:
 			delta = 0
-			self.magnitude = self.magnitude + delta
+		elif self.magnitude+delta < MIN_MAG:
+			delta = 0
+		self.magnitude += delta
 
 	def changeAngle(self,dtheta):
-		if dtheta <= 90 and dtheta >= 0:
-			self.angle = self.angle + dtheta
-		else:
+		if math.degrees(self.angle+math.radians(dtheta)) > 90:
 			dtheta = 0
-			self.angle = self.angle + dtheta
+		elif math.degrees(self.angle+math.radians(dtheta)) <0:
+			dtheta = 0
+		self.angle = self.angle + math.radians(dtheta)
 
 	def drawCannon(self,surf):
 		X1 = self.x + self.magnitude*math.cos(self.angle) 
-		Y1 = self.y + self.magnitude*math.sin(self.angle)
+		Y1 = self.y - self.magnitude*math.sin(self.angle)
+		pygame.draw.line(surf,(255,0,0),(self.x,self.y),(X1,Y1),8)
 
 
 
