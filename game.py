@@ -4,26 +4,28 @@ import pygame, sys
 import serial
 from pygame.locals import *
 import math
-import Launcher
+from colors import *
+import Launcher, rock
 
 def draw_world(surf):
 	fontObj = pygame.font.Font('freesansbold.ttf',32) #font and font size
 	textSurfaceObj = fontObj.render('Launcher 1.0',True,(255,255,255),(0,0,0)) #white text, black highlight
 	textRectObj = textSurfaceObj.get_rect()
 	textRectObj.center = (250,20)
-	pygame.draw.rect(surf,(20,150,200),(0,0,500,380)) #sky
-	pygame.draw.rect(surf,(0,255,20),(0,380,500,20)) #grass
+	pygame.draw.rect(surf,SKY_COLOR,(0,0,500,380)) #sky
+	pygame.draw.rect(surf,(GRASS_COLOR),(0,380,500,20)) #grass
 	surf.blit(textSurfaceObj,textRectObj) #draw title text
 
 pygame.init() 
 DISPLAYSURF = pygame.display.set_mode((500,400)) #main window
+pygame.display.set_caption('Launcher')
 #s = serial.Serial("/dev/ttyACM0") #uncomment eventually
 FPS = 30 #frames/s
 fpsClock = pygame.time.Clock()
 Launcher1 = Launcher.launcher(0,380)
+rock1 = rock.Rock(0,380)
 
 while(True):
-	draw_world(DISPLAYSURF) #draw background
 	for event in pygame.event.get():
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_UP: 
@@ -38,11 +40,16 @@ while(True):
 			if event.key == pygame.K_RIGHT:
 				#increase power
 				Launcher1.changeMagnitude(5)
+			if (event.key == pygame.K_SPACE) and (not rock1.isMoving()):
+				#fire rock
+				Launcher1.fire(rock1)
 		if event.type == QUIT:
 			pygame.quit()
 			sys.exit()
-
-	Launcher1.drawCannon(DISPLAYSURF) #display Launcher  
+	rock1.move(1.0/FPS)
+	draw_world(DISPLAYSURF) #draw background
+	Launcher1.drawCannon(DISPLAYSURF) #display Launcher
+	rock1.draw(DISPLAYSURF) #draw rock  
 	pygame.display.update()
 	fpsClock.tick(FPS)
 

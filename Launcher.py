@@ -1,6 +1,7 @@
 #!/usr/bin/py
 import math
 import pygame
+from colors import *
 from pygame.locals import *
 
 MAX_MAG = 100
@@ -25,16 +26,20 @@ class launcher:
 		self.magnitude += delta
 
 	def changeAngle(self,dtheta):
-		if math.degrees(self.angle+math.radians(dtheta)) > 90:
+		if math.degrees(self.angle+math.radians(dtheta)) > MAX_ANGLE:
 			dtheta = 0
-		elif math.degrees(self.angle+math.radians(dtheta)) <0:
+		elif math.degrees(self.angle+math.radians(dtheta)) < MIN_ANGLE:
 			dtheta = 0
-		self.angle = self.angle + math.radians(dtheta)
+		self.angle += math.radians(dtheta)
+
+	def fire(self,rock):
+		rock.v_x = self.magnitude*math.cos(self.angle)
+		rock.v_y = self.magnitude*math.sin(self.angle)
 
 	def drawCannon(self,surf):
 		X1 = self.x + self.magnitude*math.cos(self.angle) 
 		Y1 = self.y - self.magnitude*math.sin(self.angle)
-		pygame.draw.line(surf,(255,0,0),(self.x,self.y),(X1,Y1),8)
+		pygame.draw.line(surf,(RED),(self.x,self.y),(X1,Y1),8)
 
 
 
