@@ -9,7 +9,7 @@ import Launcher, rock
 
 def draw_world(surf):
 	fontObj = pygame.font.Font('freesansbold.ttf',32) #font and font size
-	textSurfaceObj = fontObj.render('Launcher 1.0',True,(255,255,255),(0,0,0)) #white text, black highlight
+	textSurfaceObj = fontObj.render('Launcher 1.0',True,WHITE,BLACK) #white text, black highlight
 	textRectObj = textSurfaceObj.get_rect()
 	textRectObj.center = (250,20)
 	pygame.draw.rect(surf,SKY_COLOR,(0,0,500,380)) #sky

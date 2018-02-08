@@ -16,7 +16,7 @@ class launcher:
 		self.x = x
 		self.y = y
 		self.magnitude = 50
-		self.angle = math.radians(45)
+		self.angle = math.radians(45)#initial angle
 
 	def changeMagnitude(self,delta):
 		if self.magnitude+delta > MAX_MAG:
